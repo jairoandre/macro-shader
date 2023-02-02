@@ -22,6 +22,9 @@ async fn main() {
         gl_use_material(material);
         draw_rectangle(0.0, 0.0, screen_width(), screen_height(), WHITE);
         gl_use_default_material();
+        if is_key_pressed(KeyCode::Escape) {
+            break;
+        }
         next_frame().await
     }
 }
