@@ -16,11 +16,15 @@ async fn main() {
             ..Default::default()
         },
     ).unwrap();
+    println!("{}, {}", screen_width(), screen_height());
     loop {
+        if is_key_pressed(KeyCode::Escape) {
+            break;
+        }
         clear_background(BLACK);
         material.set_uniform("Proportion", screen_width() / screen_height());
         gl_use_material(material);
-        draw_rectangle(0.0, 0.0, screen_width(), screen_height(), WHITE);
+        draw_rectangle(0.0, 0.0, screen_width(), screen_width(), WHITE);
         gl_use_default_material();
         next_frame().await
     }
